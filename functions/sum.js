@@ -1,21 +1,19 @@
-exports.handler = async (event, context) => {
-  const params = JSON.parse(event.body || '{}');
-  const { a, b } = params;
+export default async (req, ctx) => {
+  if (req.method === "POST") {
+    const res = ctx.json({ message: 'you posted!' });
 
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ error: "Both 'a' and 'b' must be numbers." }),
-    };
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    res.headers.append("Access-Control-Allow-Headers", "*");
+    res.headers.append("Access-Control-Allow-Methods", "*");
+
+    return res;
+  } else if (req.method === "OPTIONS") {
+    const res = new Response();
+
+    res.headers.set("Access-Control-Allow-Origin", "*");
+    res.headers.append("Access-Control-Allow-Headers", "*");
+    res.headers.append("Access-Control-Allow-Methods", "*");
+
+    return res;
   }
-
-  return {
-    statusCode: 201,
-    headers:{
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-    },
-    body: JSON.stringify({ sum: a + b }),
-  };
 };
