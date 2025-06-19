@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
     headers:{
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "POST",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
     },
     body: JSON.stringify({ sum: a + b }),
   };
