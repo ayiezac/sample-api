@@ -10,7 +10,12 @@ exports.handler = async (event, context) => {
   }
 
   return {
-    statusCode: 200,
+    statusCode: 201,
+    headers:{
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "*",
+      "Access-Control-Allow-Methods": "*",
+    },
     body: JSON.stringify({ sum: a + b }),
   };
 };
