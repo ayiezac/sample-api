@@ -13,8 +13,8 @@ exports.handler = async (event, context) => {
     statusCode: 201,
     headers:{
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "*",
-      "Access-Control-Allow-Methods": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "POST",
     },
     body: JSON.stringify({ sum: a + b }),
   };
